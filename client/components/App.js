@@ -1,5 +1,5 @@
 var App = () => (
-  <div>
+  <div> 
     <Nav />
     <div className="col-md-7">
       <VideoPlayer/>
@@ -9,3 +9,5 @@ var App = () => (
     </div>
   </div>
 );
+
+ReactDOM.render(<App />, document.getElementById("app"));
