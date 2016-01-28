@@ -5,12 +5,9 @@ class App extends React.Component {
     this.state = {
       currentVideo: window.exampleVideoData[0]
     }
-
-    // this.currentVideo = window.exampleVideoData[0]
   }
 
   onVideoListEntryClick(i) {
-    //update current video
     this.setState({currentVideo: window.exampleVideoData[i]});
   }
 
