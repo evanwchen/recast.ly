@@ -3,7 +3,40 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      currentVideo: window.exampleVideoData[0]
+      search: false,
+      currentVideo: {
+        "kind": "youtube#searchResult",
+        "etag": "\"abQHWywil_AkNqdqji7_FqiK-u4/Ykxo_CqKu8F8kcm-iNgL332gQTY\"",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "4ZAEBxGipoA"
+        },
+        "snippet": {
+          "publishedAt": "2015-08-02T20:52:58.000Z",
+          "channelId": "UCJbPGzawDH1njbqV-D5HqKw",
+          "title": "React JS Tutorial for Beginners - 1 - Introduction",
+          "description": "My website - https://www.thenewboston.com/videos.php Have questions about the tutorial or React? Ask them here ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/4ZAEBxGipoA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/4ZAEBxGipoA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/4ZAEBxGipoA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "thenewboston",
+          "liveBroadcastContent": "none"
+        }
+      }
     }
   }
 
@@ -11,18 +44,35 @@ class App extends React.Component {
     this.setState({currentVideo: window.exampleVideoData[i]});
   }
 
+  onVideoSearch()
+
   render() {
-    return (
-      <div>
-        <Nav currentState={this.state.done}/>
-        <div className="col-md-7">
-          <VideoPlayer video={this.state.currentVideo}/>
+    if (this.state.search) {
+      return (
+        <div>
+          <Nav currentState={this.state.done}/>
+          <div className="col-md-7">
+            <VideoPlayer video={this.state.currentVideo}/>
+          </div>
+          <div className="col-md-5">
+            <VideoList whenClicked={this.onVideoListEntryClick.bind(this)}/>
+          </div>
         </div>
-        <div className="col-md-5">
-          <VideoList whenClicked={this.onVideoListEntryClick.bind(this)}/>
+      );
+    } else {
+      return (
+        <div>
+          <Nav currentState={this.state.done}/>
+          <div className="col-md-7">
+            <VideoPlayer video={this.state.currentVideo}/>
+          </div>
+          <div className="col-md-5">
+          </div>
         </div>
-      </div>
-    );
+      )
+    }
+
+
   }
 
 }

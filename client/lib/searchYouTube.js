@@ -1,17 +1,15 @@
 var searchYouTube = (options, callback) => {
 
   $.ajax({
-      url: 'https://www.googleapis.com/youtube/v3/search'
+      url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q='puppies'&key=${YOUTUBE_API_KEY}`,
       type: 'GET',
-      q: JSON.stringify(options.query),
-      pageInfo.totalResults: options.max || 5,
-      videoEmbeddable: 'true',
-      // api key?
-      contentType: 'application/json',
       success: function (data) {
         console.log("successful AJAX call");
+        console.log(data);
+        window.exampleVideoData = data.items;
       },
       error: function (data) {
+        console.log(data);
         console.error('chatterbox: Failed to send message');
       }
     });
