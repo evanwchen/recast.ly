@@ -9,7 +9,7 @@ var searchYouTube = (options, callback) => {
       // api key?
       contentType: 'application/json',
       success: function (data) {
-        function(){};
+        console.log("successful AJAX call");
       },
       error: function (data) {
         console.error('chatterbox: Failed to send message');

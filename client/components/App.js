@@ -13,7 +13,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div> 
+      <div>
         <Nav currentState={this.state.done}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.currentVideo}/>
