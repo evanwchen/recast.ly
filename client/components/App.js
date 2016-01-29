@@ -12,14 +12,21 @@ class App extends React.Component {
     this.setState({currentVideo: this.state.videoList[i]});
   }
 
+  onVideoSearch(query){
+    searchYouTube(query, (videos) =>
+      //?why do we have to use 'this'?
+      this.setState({
+        videoList: videos,
+        currentVideo: videos[0]
+      })
+    )
+  }
+
   componentDidMount() {
     var options = {
       query: 'puppies',
       max: 5
     }
-    console.log("options :", options);
-
-
     searchYouTube(options, (videos) =>
       //?why do we have to use 'this'?
       this.setState({
@@ -32,7 +39,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav currentState={this.state.done}/>
+        <Nav search={this.onVideoSearch.bind(this)}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.currentVideo}/>
         </div>

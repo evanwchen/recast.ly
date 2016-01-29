@@ -13,8 +13,7 @@ var searchYouTube = (options, callback) => {
   //       console.error('chatterbox: Failed to send message');
   //     }
   //   });
-    console.log("options:",options);
-    console.log("callback:", callback);
+
     $.get('https://www.googleapis.com/youtube/v3/search', {
       q: options.query,
       maxResults: options.max,
