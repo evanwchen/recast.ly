@@ -1,11 +1,16 @@
 
-var VideoList = (props) => (
+var VideoList = (props) => {
+  if (props.videoList.length === 0){
+    return <div>Loading...</div>
+  }
 
-  <div className="video-list media">
-    {window.exampleVideoData.map((item,i) =>
-      <VideoListEntry whenClicked={props.whenClicked} entry={item} index={i} />
-    )}
-  </div>
-);
+  return (
+    <div className="video-list media">
+      {props.videoList.map((item,i) =>
+        <VideoListEntry whenClicked={props.whenClicked} entry={item} index={i} />
+      )}
+    </div>
+  )
+};
 
 window.VideoList = VideoList;
